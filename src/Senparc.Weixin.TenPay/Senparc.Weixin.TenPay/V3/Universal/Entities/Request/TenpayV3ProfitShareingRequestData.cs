@@ -45,7 +45,10 @@ namespace Senparc.Weixin.TenPay.V3
     /// </summary>
     public class TenpayV3ProtfitSharingRequestData
     {
-
+        /// <summary>
+        /// 接口版本号 version 是 String(32) 1.0 新增字段，接口版本号，区分原接口，默认填写1.0。
+        /// </summary>
+        public string version = "1.0";
         /// <summary>
         /// 公众账号ID
         /// </summary>
@@ -667,6 +670,7 @@ namespace Senparc.Weixin.TenPay.V3
 
             //设置package订单参数
             //以下设置顺序按照官方文档排序，方便维护：https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1
+            PackageRequestHandler.SetParameter("version", this.version);     
             PackageRequestHandler.SetParameter("appid", this.AppId);                       //公众账号ID
             PackageRequestHandler.SetParameter("mch_id", this.MchId);                      //商户号
             PackageRequestHandler.SetParameterWhenNotNull("sub_appid", this.SubAppId);     //子商户公众账号ID
